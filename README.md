@@ -258,6 +258,19 @@ git commit -m "wesh"
 
 ---
 
+## TypeScript path alias (@/\*)
+
+This boilerplate supports clean imports using the `@/*` alias:
+
+Where it is configured:
+
+- tsconfig.json (compilerOptions.baseUrl + paths)
+- tsconfig.build.json extends tsconfig.json (alias works in production build)
+- jest.config.ts (moduleNameMapper) so tests resolve @/\*
+- ESLint resolves aliases via eslint-import-resolver-typescript + tsconfig.json
+
+---
+
 ## Environment Variables
 
 Recommended setup:
@@ -288,7 +301,6 @@ Recommended workflow:
 
 Possible next steps when needed:
 
-- TypeScript alias @/\* for cleaner imports
 - Integration tests with supertest
 - Docker + docker-compose for local DB
 - Minimal CI (lint / test / build)
@@ -307,8 +319,8 @@ pnpm build
 pnpm start:dev
 ```
 
-Then open:
+Then test:
 
 ```bash
-GET http://localhost:3000/health
+curl http://localhost:3000/health
 ```
